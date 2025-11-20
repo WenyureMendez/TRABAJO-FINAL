@@ -1,0 +1,1051 @@
+# 📘 MANUAL DE USUARIO
+
+Nombre del proyecto: Taller Automotrix
+
+Nombre del estudiante: Wenyure Mendez Lafaurie
+
+Materia: Base de Datos
+
+Semestre: 6
+
+Fecha: 19/11/2025
+
+Docente: Jaider Quintero Mendoza
+
+### Historia del Taller Automotrix
+
+El Taller Automotrix es un sistema diseñado para gestionar de forma integral todas las operaciones de un taller automotriz. Incluye administración de:
+
+-   Órdenes de trabajo
+
+-   Servicios realizados
+
+-   Repuestos utilizados
+
+-   Citas programadas
+
+-   Aseguradoras asociadas
+
+-   Pagos de clientes
+
+El objetivo es optimizar la atención al cliente, la organización interna del taller y el control administrativo.
+
+### 1. Modelo de Datos del Sistema
+
+A continuación se presenta un resumen de las principales tablas y sus relaciones dentro del sistema:
+
+### **Tablas principales:**
+
+-   **Cliente**: información del propietario.
+
+-   **Vehículo**: datos del automóvil registrado.
+
+-   **Aseguradora**: compañías de seguros asociadas.
+
+-   **Cita**: agendamiento para ingreso al taller.
+
+-   **OrdenTrabajo (Workorder)**: documento principal del servicio.
+
+-   **Servicio**: lista de servicios disponibles.
+
+-   **OrdenServicio (WorkorderService)**: servicios incluidos dentro de la orden.
+
+-   **Repuesto**: inventario de repuestos.
+
+-   **OrdenRepuesto (WorkorderSparepart)**: repuestos usados en la orden.
+
+-   **Mecánico**: técnicos del taller.
+
+-   **Pago**: registro de pagos asociados a facturas.
+
+    ### 1.2 Relaciones
+
+    Las entidades del sistema se relacionan de la siguiente manera:
+
+    **Relaciones 1:1**
+
+    Vehículo — Aseguradora: Un vehículo puede tener una póliza activa única.
+
+    ### **Relaciones 1:N**
+
+    Cliente — Vehículo: Un cliente puede tener varios vehículos.
+
+    Vehículo — OrdenTrabajo: Un vehículo puede tener múltiples órdenes de trabajo asociadas.
+
+    ### **Relaciones N:N** (gestionadas mediante tablas intermedias)
+
+    OrdenTrabajo — Servicio, usando OrdenServicio.
+
+    OrdenTrabajo — Repuesto, usando OrdenRepuesto.
+
+    ### 2. Módulos del Sistema
+
+    El sistema está compuesto por los siguientes módulos principales:
+
+    **2.1 Citas y Seguros**
+
+    Incluye:
+
+    **Citas**: Gestión de Citas de clientes para ingreso al taller.
+
+    **Seguros**: Gestión de Seguros información de las pólizas asociadas a los vehículos.
+
+    ### **2.2 Facturación**
+
+    Incluye:
+
+    **Facturas** : documentos generados por trabajos realizados.
+
+    **Pagos**: registro de pagos efectuados por los clientes.
+
+    **2.3 Clientes y Vehículos**
+
+    Incluye:
+
+    **Clientes**: datos de los propietarios.
+
+    **Vehículos**: información de los autos registrados (placa, marca, modelo, año, dueño, etc.).
+
+    **2.4 Mecánicos y Servicios**
+
+    Incluye:
+
+    **Mecánicos**: personal técnico del taller.
+
+    **Servicios**: lista de servicios que realiza el taller y precio
+
+    **2.5 Repuestos**
+
+    Incluye:
+
+    **Repuestos**: inventario de piezas disponibles para reparaciones.
+
+    **2.6 Órdenes de Servicio (workorders)**
+
+    Incluye:
+
+    **Órdenes de Servicio (Workorders)**: documento principal del trabajo.
+
+    **Servicios de la orden (WorkorderService)**: servicios incluidos dentro de la orden.
+
+    **Repuestos de la orden (WorkorderSparepart)**: repuestos utilizados en la orden.
+
+    ### 2. Ingreso al Sistema
+
+    Al entrar al sistema, el usuario verá el sistema el cual presenta sus módulos en el panel lateral izquierdo siguiendo el siguiente orden (como se muestra en la interfaz del frontend):
+
+![](images/clipboard-2921037461.png)
+
+### 3. Clientes y Vehículos
+
+![](images/clipboard-2293728219.png)
+
+### 3.1. Gestión de Clientes
+
+Al hacer clic en **Clientes**, se muestra la lista de registros actuales de la gestión de clientes, como se observa en la interfaz.
+
+![](images/clipboard-1789530650.png)
+
+![](images/clipboard-1103553623.png)
+
+-   En la tabla se visualizan los siguientes campos:
+
+    -   **Nombre:** Nombre y apellido del cliente.
+
+    -   **Email:** Correo electrónico del cliente.
+
+    -   **Teléfono:** Número telefónico del cliente.
+
+    -   **Acciones:** Editar y Eliminar.
+
+    ### 3.2 Crear del nuevo cliente
+
+### Paso 1. Crear del nuevo cliente
+
+Hacemos clic en el botón verde **"Nuevo Cliente"** ubicado en la parte superior derecha.
+
+![](images/clipboard-2356816055.png)
+
+### Paso 2. Formulario para registrar nuevo cliente.
+
+Después del clic, se abre una nueva vista con un formulario donde se debe registrar la información del nuevo cliente.
+
+![](images/clipboard-943138425.png){width="502"}
+
+### Paso 3. Creacion éxitosa del nuevo cliente .
+
+Se llenan los campos con la información solicitada.
+
+![](images/clipboard-887086367.png){width="421"}
+
+Para guardarla, hacemos clic en el botón verde **Guardar** ubicado en el lado derecho del formulario.
+
+![](images/clipboard-2887682075.png)
+
+-   El sistema mostrará un mensaje de éxito y el nuevo cliente aparecerá en el listado junto a los demás registros.
+
+    ![](images/clipboard-26840343.png)
+
+    ![](images/clipboard-603159901.png)
+
+    -   
+
+        ### 3.3 Editar el nuevo cliente 
+
+    ### Paso 1. Editar el cliente
+
+    Para editar un cliente existente, se hace clic en el ícono de lápiz verde ubicado en la columna de acciones.
+
+    ![](images/clipboard-843604704.png)
+
+    ### Paso 2. Editar algun campo del formulario.
+
+El sistema abre nuevamente el formulario del cliente. Se modifican los campos necesarios.
+
+Finalmente, se hace clic en **Actualizar**.
+
+![](images/clipboard-1323195219.png)
+
+-   El sistema mostrará un mensaje indicando que el cliente ha sido actualizado correctamente.
+
+    ![](images/clipboard-1403882625.png)
+
+    ![](images/clipboard-3620707125.png)
+
+    ### 3.4 Eliminar registro
+
+    ### Paso 1. Eliminar el registro nuevo creado 
+
+    Para eliminar un cliente, se hace clic en el ícono de la papelera roja.
+
+    ![](images/clipboard-3310886202.png)
+
+    ### Paso 2. Confirmar eliminar nuevo registro 
+
+    El sistema mostrará una ventana emergente solicitando confirmación. Se debe hacer clic en **“Sí, eliminar”**.
+
+    ![](images/clipboard-327806160.png)
+
+    A continuación, el sistema mostrará un mensaje indicando que el registro fue eliminado correctamente.
+
+![](images/clipboard-2380787479.png)
+
+### 3.5 **Gestión de Vehículos**
+
+Al hacer clic en Vehiculos, se muestra la lista de registros actuales de la gestión de vehiculos, como se observa en la interfaz.
+
+![](images/clipboard-2133474620.png)
+
+![](images/clipboard-977832178.png)
+
+En la tabla se visualizan los siguientes campos:
+
+-   **Placa:** Identificador único del vehículo.
+
+-   **Marca:** Marca del vehículo.
+
+-   **Modelo:** Modelo del vehículo.
+
+-   **Estado:** Estado del vehiculo en le taller.
+
+-   **Cliente:** Propietario del vehículo
+
+-   **Acciones:** **Editar** y **Eliminar** el registro.
+
+    ### **3.2.1 Crear un nuevo vehículo**
+
+    **Paso 1 – Crear nuevo vehículo**
+
+    En la parte superior derecha del listado aparece el botón verde **“Nuevo Vehículo”**.\
+    Se hace clic allí para registrar un vehículo nuevo.
+
+    ![](images/clipboard-3259147116.png)
+
+    **Paso 2 – Formulario de registro**
+
+    El sistema abre una nueva pestaña mostrando el formulario con los siguientes campos:\
+    ![](images/clipboard-3551364498.png){width="436"}
+
+    **Paso 3 – Creación exitosa**
+
+    Después de completar la información del vehículo, se hace clic en el botón **Guardar**.
+
+![](images/clipboard-416653581.png)
+
+El sistema, valida los datos, guarda el registro en la tabla **vehicles,** Muestra un mensaje de éxito y Agrega el vehículo al listado automáticamente.
+
+![](images/clipboard-505044667.png)
+
+![](images/clipboard-401860410.png)
+
+### 3.2.2 Editar un vehículo
+
+**Paso 1 – Seleccionar vehículo a editar**
+
+En la tabla de vehículos, se hace clic en el **ícono de lápiz verde** ubicado en la columna de acciones.
+
+![](images/clipboard-2477763129.png)
+
+### **Paso 2 – Modificar campos**
+
+El formulario se abre nuevamente con la información actual del vehículo.Puedes modificar cualquiera de los campos.
+
+En este caso todos
+
+![El sistema actualiza el registro en la base de datos y muestra un mensaje de confirmación.](images/clipboard-3167237819.png)
+
+![](images/clipboard-2513530514.png)
+
+### **3.2.3 Eliminar un vehículo**
+
+**Paso 1 – Eliminar registro**
+
+En la tabla, se hace clic en el ícono **de papelera roja** para eliminar el vehículo.
+
+![](images/clipboard-311729580.png)
+
+### **Paso 2 – Confirmación**
+
+Aparece una ventana emergente solicitando confirmar la acción.
+
+Se hace clic en **“Sí, eliminar”**.
+
+![](images/clipboard-1903405569.png){width="289"}
+
+El sistema, elimina el vehículo de la tabla **vehicles,** muestra un mensaje indicando que el proceso fue exitoso y actualiza la lista
+
+![](images/clipboard-3071273527.png)
+
+### 4. Gestión de Aseguros
+
+Al hacer clic en **Aseguradoras**, el sistema muestra la lista de todas las aseguradoras registradas.
+
+![](images/clipboard-446223238.png)
+
+![](images/clipboard-2316196317.png)
+
+En la tabla se visualizan los siguientes campos:
+
+-   Nombre de la compañía
+
+-   Número de póliza
+
+-   Fecha de inicio de la poliza
+
+-   Fecha de fin de la poliza
+
+-   Vehículo asociado a la poliza
+
+Acciones: Editar y Eliminar
+
+### **4.1 Crear una nueva aseguradora**
+
+### **Paso 1 – Crear nueva aseguradora**
+
+En la parte superior derecha del listado aparece el botón verde **“Nuevo seguro”**.\
+Se hace clic para iniciar el registro.
+
+![](images/clipboard-1876626117.png)
+
+### **Paso 2 – Llenado del formulario**
+
+El sistema abre una nueva vista con el formulario correspondiente.
+
+![](images/clipboard-3827711794.png){width="449"}
+
+Con los siguientes campos:
+
+-   Nombre de la compañía
+
+-   Número de póliza
+
+-   Fecha de inicio de la póliza
+
+-   Fecha de vencimiento
+
+-   Vehículo asociado (seleccionado desde el listado de vehículos existentes)
+
+### **Paso 3 – Registro exitoso**
+
+Una vez completados los datos, se hace clic en **Guardar**.
+
+![](images/clipboard-273436085.png)
+
+El sistema, valida la información, guarda el registro en la tabla **seguros** y muestra un mensaje de éxito
+
+Añade la aseguradora al listado principal
+
+![](images/clipboard-1227182846.png)
+
+## **4.2 Editar una aseguradora**
+
+### **Paso 1 – Seleccionar aseguradora a editar**
+
+En la tabla, se hace clic en el **ícono de lápiz verde** ubicado en la columna de acciones.
+
+![](images/clipboard-2651696432.png)
+
+### **Paso 2 – Actualizar datos**
+
+El sistema abre nuevamente el formulario con la información actual registrada.\
+![](images/clipboard-2153074510.png){width="391"}
+
+Una vez realizados los cambios, se hace clic en **Actualizar**.
+
+El sistema mostrará un mensaje indicando que la aseguradora fue actualizada correctamente.
+
+### **4.3 Eliminar una aseguradora**
+
+**Paso 1 – Eliminar registro**
+
+Para eliminar una aseguradora, se hace clic en el ícono **de papelera roja**.
+
+![](images/clipboard-3915249539.png)
+
+### **Paso 2 – Confirmar eliminación**
+
+Aparece una ventana emergente solicitando confirmación.\
+Se hace clic en **“Sí, eliminar”**.
+
+![](images/clipboard-3423277894.png){width="265"}
+
+El sistema elimina el registro de **insurances**, actualiza la lista y muestra un mensaje final indicando que la eliminación fue exitosa.
+
+![](images/clipboard-945879929.png){width="538"}
+
+### **5. Gestión de Citas**
+
+El módulo de **Citas** permite administrar los registros relacionados con la tabla **appointments**.
+
+![](images/clipboard-2400279989.png)
+
+![](images/clipboard-1212503143.png){width="477"}
+
+Al hacer clic en **Citas**, se muestra el listado con las citas actuales.
+
+**5.1 Crear una nueva cita**
+
+**Paso 1 – Crear cita**
+
+En la esquina superior derecha aparece el botón verde **“Nueva Cita”**.\
+Se hace clic para registrar una nueva cita.
+
+![](images/clipboard-4276732331.png){width="465"}
+
+### **Paso 2 – Formulario de creación**
+
+El formulario muestra los siguientes campos:
+
+-   **Cliente** (lista desplegable de clientes existentes)
+
+    **Vehículo** (lista de vehículos registrados)
+
+    **Fecha de la cita**
+
+    **Motivo de la cita** (razón)
+
+-   ![](images/clipboard-1316052967.png){width="487"}
+
+**Paso 3 – Creación exitosa**
+
+Una vez completados los datos, se hace clic en **Guardar**.
+
+![](images/clipboard-2083919203.png){width="384"}
+
+El sistema verifica los datos, registra la cita en la tabla citaa, muestra un mensaje de confirmación y agrega la cita al listado principal
+
+![](images/clipboard-4032711514.png)
+
+![](images/clipboard-1870310913.png)
+
+### **5.4. Editar una cita**
+
+**Paso 1 – Seleccionar cita a editar**
+
+En la tabla, se hace clic en el ícono de **lápiz verde**.
+
+![](images/clipboard-3028385460.png)
+
+**Paso 2 – Modificar información**
+
+El sistema abre el formulario con los datos de la cita seleccionada.
+
+![](images/clipboard-2477889182.png){width="345"}
+
+Luego, se hace clic en **Actualizar**.
+
+El sistema confirmará que la cita fue editada correctamente.
+
+![](images/clipboard-2163321211.png){width="290"}
+
+![](images/clipboard-1575679430.png){width="463"}
+
+### **5.5 Eliminar una cita**
+
+### **Paso 1 – Eliminar registro**
+
+Para eliminar una cita, se hace clic en el ícono **de papelera roja**.
+
+![](images/clipboard-557951903.png)
+
+### **Paso 2 – Confirmación de eliminación**
+
+El sistema muestra un mensaje de advertencia.\
+Se debe hacer clic en **“Sí, eliminar”**.
+
+![](images/clipboard-1950679846.png){width="278"}
+
+El sistema, elimina la cita de la tabla citas, actualiza el listado
+
+-   Muestra un mensaje que indica que la eliminación fue exitosa
+
+    ![](images/clipboard-1852609894.png){width="428"}
+
+    ### **6. Gestión de Facturas**
+
+    Al hacer clic en **Facturas**, se muestra el listado de todas las facturas registradas.
+
+    ![](images/clipboard-1709905207.png)
+
+    ![](images/clipboard-4027887414.png){width="524"}
+
+**6.1 Crear una nueva factura**
+
+**Paso 1 – Crear nueva factura**
+
+En la parte superior derecha del módulo se encuentra el botón verde **“Nueva Factura”**.\
+Hacemos clic sobre él.
+
+![](images/clipboard-933433795.png){width="436"}
+
+### **Paso 2 – Formulario de nueva factura**
+
+El formulario solicita los siguientes datos:
+
+-   **Fecha de factura**
+
+    **Total a cobrar**
+
+    **Orden de trabajo** (se selecciona de la lista de órdenes existentes)
+
+    ![](images/clipboard-1147972339.png){width="354"}
+
+### **Paso 3 – Registro exitoso**
+
+Después de llenar el formulario, se hace clic en **Guardar**.
+
+![](images/clipboard-3096081040.png)
+
+El sistema guarda el registro en la tabla factura y muestra un mensaje de éxito
+
+Añade la factura al listado principal
+
+![](images/clipboard-619202071.png)
+
+### **7.2 Editar una factura**
+
+**Paso 1 – Seleccionar factura a editar**
+
+En la tabla, se hace clic en el ícono de **lápiz verde**.
+
+![](images/clipboard-3418833291.png)
+
+**Paso 2 – Modificar información**
+
+El sistema abre el formulario con los datos existentes de la factura.\
+![](images/clipboard-1813732862.png)
+
+Luego, se hace clic en **Actualizar**.
+
+El sistema mostrará un mensaje confirmando que la factura fue actualizada correctamente.
+
+### **5.8 Eliminar una factura**
+
+**Paso 1 – Eliminar registro**
+
+En la tabla, se hace clic en el ícono de **papelera roja**.
+
+![](images/clipboard-4080967954.png)
+
+**Paso 2 – Confirmación**
+
+El sistema solicita confirmación con una ventana emergente.\
+Se hace clic en **“Sí, eliminar”**.
+
+![](images/clipboard-867598197.png){width="267"}
+
+El sistema elimina la factura, actualiza la tabla y muestra un mensaje indicando que el registro se eliminó exitosamente.
+
+![](images/clipboard-1245828463.png){width="473"}
+
+### **7.Gestión de Pagos**
+
+El módulo de **Pagos** administra los registros asociados a las facturas.
+
+Al hacer clic en **Pagos**, se muestra el listado de pagos registrados.
+
+![](images/clipboard-2481277628.png)
+
+![](images/clipboard-2816770386.png){width="485"}
+
+## **3.5.2.1 Registrar un nuevo pago**
+
+### **Paso 1 – Crear nuevo pago**
+
+Hacemos clic en el botón verde **“Nuevo Pago”** ubicado en la parte superior derecha.
+
+![](images/clipboard-1408677564.png){width="278"}
+
+### **Paso 2 – Llenado del formulario**
+
+El sistema abre el formulario que solicita:
+
+![](images/clipboard-1483571467.png){width="436"}
+
+### **Paso 3 – Registro exitoso**
+
+Hacemos clic en **Guardar**.
+
+El sistema registra el pago en la tabla **pagos** yMuestra un mensaje de éxito
+
+![](images/clipboard-1911850380.png)
+
+Añade el pago al listado principal
+
+![](images/clipboard-3274147661.png){width="500"}
+
+### **6.2 Editar un pago**
+
+**Paso 1 – Seleccionar pago a editar**
+
+En la tabla se hace clic en el ícono de **lápiz verde**.
+
+![](images/clipboard-3737020164.png){width="530"}
+
+**Paso 2 – Modificar datos**
+
+El sistema muestra el formulario con los datos actuales del pago.
+
+Luego se hace clic en **Actualizar**.
+
+El sistema muestra un mensaje indicando que el pago fue actualizado correctamente.
+
+![](images/clipboard-4291805074.png)
+
+**7.3 Eliminar un pago**
+
+### **Paso 1 – Eliminar registro**
+
+En el listado, se hace clic en el ícono de **papelera roja**.
+
+![](images/clipboard-3593657375.png){width="522"}
+
+### **Paso 2 – Confirmar eliminación**
+
+El sistema mostrará una ventana emergente.\
+Se hace clic en **“Sí, eliminar”**.
+
+![](images/clipboard-2956371617.png){width="394"}
+
+### **7 Gestión de Mecánicos**
+
+Al hacer clic en **Mecánicos**, se muestra la lista de registros actuales de la tabla **mecanicos**.
+
+![](images/clipboard-3170241208.png){width="194"}
+
+![](images/clipboard-786597472.png)
+
+**7.1 Crear un nuevo mecánico**
+
+**Paso 1 – Crear nuevo mecánico**
+
+En la parte superior derecha del listado aparece el botón verde **“Nuevo Mecánico”**.\
+Se debe hacer clic sobre él.
+
+![](images/clipboard-3690009224.png)
+
+### **Paso 2 – Formulario de registro**
+
+El sistema abre una vista con el formulario correspondiente.
+
+![](images/clipboard-2026175570.png){width="393"}
+
+### **Paso 3 – Creación exitosa**
+
+Una vez completada la información, hacemos clic en **Guardar**.
+
+El sistema registra el mecánico en la tabla **mechanico** y muestra un mensaje de éxito
+
+![](images/clipboard-3323014658.png)
+
+-   Añade el nuevo mecánico al listado principal
+
+    ![](images/clipboard-4016048266.png)
+
+### **7.2 Editar un mecánico**
+
+**Paso 1 – Seleccionar registro**
+
+En la tabla, hacemos clic en el ícono de **lápiz verde**.
+
+![](images/clipboard-3149432635.png)
+
+**Paso 2 – Editar información**
+
+Se abrirá nuevamente el formulario del mecánico con los datos actuales.
+
+Una vez realizados los cambios, se hace clic en **Actualizar**.
+
+El sistema mostrará un mensaje indicando que el mecánico fue actualizado correctamente.
+
+![](images/clipboard-2677892023.png)
+
+### **7.3 Eliminar un mecánico**
+
+**Paso 1 – Eliminar registro**
+
+En la tabla de mecánicos, se hace clic en el ícono de **papelera roja**.
+
+![](images/clipboard-3080652139.png)
+
+**Paso 2 – Confirmación de eliminación**
+
+El sistema abrirá una ventana emergente solicitando confirmación.\
+Se presiona el botón **“Sí, eliminar”**.
+
+![](images/clipboard-625485377.png){width="385"}
+
+Finalmente, el sistema muestra un mensaje que confirma que el mecánico fue eliminado correctamente.
+
+![](images/clipboard-3552608017.png)
+
+### **7.4 Gestión de Servicios**
+
+Al hacer clic en **Servicios**, se lista toda la información almacenada en la tabla **services**.
+
+![](images/clipboard-207299378.png)
+
+![](images/clipboard-247968668.png)
+
+### **7.5 Crear un nuevo servicio**
+
+**Paso 1 – Crear servicio**
+
+En la parte superior derecha se encuentra el botón verde **“Nuevo Servicio”**.
+
+![](images/clipboard-1686318782.png)
+
+**Paso 2 – Completar el formulario**
+
+Al hacer click. envia a un formulario
+
+![](images/clipboard-3549861634.png){width="414"}
+
+**Paso 3 – Registro exitoso**
+
+Se hace clic en **Guardar**.
+
+El sistema registra el servicio en la tabla **servicios** y muestra un mensaje de éxito
+
+-   ![](images/clipboard-791742037.png)
+
+    Agrega el servicio al listado
+
+    ![](images/clipboard-983125992.png)
+
+### **7.6 Editar un servicio**
+
+**Paso 1 – Seleccionar servicio**
+
+Hacemos clic en el ícono de **lápiz verde** en el registro que queremos modificar.
+
+![](images/clipboard-420349916.png)
+
+**Paso 2 – Editar información**
+
+El sistema abre el formulario con los datos actuales del servicio.
+
+Después de los cambios, se hace clic en **Actualizar**.
+
+El sistema muestra un mensaje indicando que el servicio fue actualizado correctamente.
+
+![](images/clipboard-3105257705.png)
+
+![](images/clipboard-3072180093.png)
+
+### **7.8 Eliminar un servicio**
+
+**Paso 1 – Eliminar registro**
+
+Hacemos clic en el ícono de **papelera roja**.
+
+![](images/clipboard-3441819548.png)
+
+**Paso 2 – Confirmación**
+
+El sistema mostrará una ventana emergente.\
+Se debe hacer clic en **“Sí, eliminar”**.
+
+![](images/clipboard-3656297796.png){width="471"}
+
+El servicio será eliminado de la tabla y el sistema mostrará un mensaje de confirmación.
+
+![](images/clipboard-148205144.png){width="512"}
+
+### **8. Gestión de Repuestos**
+
+El módulo de **Repuestos** permite administrar todas las piezas y componentes disponibles en el taller para ser utilizados en reparaciones y órdenes de trabajo.
+
+Al hacer clic en **Repuestos**, se muestra el listado de los registros actuales de la tabla **spareparts**.
+
+![](images/clipboard-4122677923.png)
+
+![](images/clipboard-2698547561.png)
+
+### **8.1 Crear un nuevo repuesto**
+
+**Paso 1 – Crear repuesto**
+
+En la parte superior derecha del módulo aparece el botón verde **“Nuevo Repuesto”**.\
+Hacemos clic para iniciar el registro.
+
+![](images/clipboard-3272754706.png)
+
+### **Paso 2 – Formulario de registro**
+
+El sistema despliega un formulario.
+
+![](images/clipboard-838532040.png)
+
+**Paso 3 – Registro exitoso**
+
+Una vez completados los campos, se hace clic en **Guardar**.
+
+El sistema agrega el nuevo repuesto a la tabla respuestos y muestra un mensaje
+
+![](images/clipboard-3971934606.png)
+
+Actualiza el listado para mostrar el nuevo registro
+
+![](images/clipboard-2973256052.png)
+
+**8.2 Editar un repuesto**
+
+**Paso 1 – Seleccionar repuesto a editar**
+
+En la tabla, hacemos clic en el **ícono de lápiz verde** que corresponde al repuesto que deseamos modificar.
+
+![](images/clipboard-3945019500.png)
+
+### **Paso 2 – Modificar información**
+
+El formulario se abre con la información actual del repuesto.
+
+![](images/clipboard-2117014520.png)
+
+Luego de realizar los cambios, se hace clic en **Actualizar**.
+
+### **8.3 Eliminar un repuesto**
+
+### **Paso 1 – Eliminar registro**
+
+En la lista de repuestos, se hace clic en el **ícono de papelera roja**.
+
+![](images/clipboard-2485273405.png)
+
+**Paso 2 – Confirmación**
+
+Aparece una ventana emergente solicitando confirmar la acción.\
+Se debe hacer clic en **“Sí, eliminar”**.
+
+![](images/clipboard-2301983878.png){width="415"}
+
+Muestra un mensaje
+
+![](images/clipboard-3798825729.png)
+
+### **9 Gestión de Órdenes de Trabajo**
+
+El módulo de **Órdenes de Trabajo** permite registrar, administrar y actualizar las reparaciones o servicios realizados a los vehículos en el taller.
+
+### **9.1 Vista general de Órdenes de Trabajo**
+
+Al hacer clic en **Órdenes de Trabajo**, se muestra el listado de registros de la tabla **workorders**.
+
+![](images/clipboard-3051455578.png)
+
+![](images/clipboard-1901395141.png)
+
+**9.2 Crear una nueva orden de trabajo**
+
+**Paso 1 – Crear Orden**
+
+En la parte superior derecha se encuentra el botón verde **“Nueva Orden”**.\
+Hacemos clic sobre él.
+
+![](images/clipboard-2873793861.png)
+
+**Paso 2 – Llenar el formulario inicial**
+
+![](images/clipboard-363007982.png){width="372"}
+
+**Paso 3 – Registro exitoso**
+
+Se hace clic en **Guardar**.
+
+El sistema registra la orden en la tabla **workorders** yMuestra un mensaje de éxito
+
+![](images/clipboard-3486458089.png){width="447"}
+
+Abre la vista detallada de la orden donde se gestionan los servicios y repuestos
+
+### **9.3 Editar una orden de trabajo**
+
+**Paso 1 – Seleccionar orden**
+
+En el listado principal se hace clic en el **ícono de lápiz verde**.
+
+![](images/clipboard-2027792613.png)
+
+**Paso 2 – Editar campos**
+
+Edita el campo que creas que es necesaerio
+
+![](images/clipboard-3952644299.png)
+
+Una vez realizados los cambios se hace clic en **Actualizar**.
+
+### **10. Gestión de Servicios aplicados a la orden**
+
+Cada orden puede tener uno o varios servicios asignados.\
+Esta sección aparece dentro de la vista detallada de la orden.
+
+![](images/clipboard-2537373888.png){width="177"}
+
+![](images/clipboard-2546322181.png)
+
+## **10.1 Agregar un servicio a la orden**
+
+### **Paso 1 – Clic en “Agregar Servicio”**
+
+Dentro de la vista de la orden hay un botón **“Agregar Servicio”**.
+
+![](images/clipboard-1544785033.png)
+
+### **Paso 2 – Completar formulario**
+
+Se deben llenar los campos:
+
+![](images/clipboard-2865089826.png){width="467"}
+
+### **Paso 3 – Guardar**
+
+Se hace clic en **Guardar**.
+
+![](images/clipboard-3681035102.png)
+
+El servicio aparecerá inmediatamente en la lista de servicios de la orden.
+
+![](images/clipboard-2194130114.png)
+
+### **10 Editar un servicio asignado**
+
+### **Paso 1 – Seleccionar servicio**
+
+Clic en el **lápiz verde** junto al servicio.
+
+![](images/clipboard-3111407315.png)
+
+### **Paso 2 – Modificar datos**
+
+![](images/clipboard-11853155.png){width="480"}
+
+Clic en **Actualizar**.
+
+El sistema confirma que el servicio fue actualizado.
+
+### **10.3 Eliminar un servicio de la orden**
+
+### **Paso 1 – Clic en la papelera roja**
+
+En la fila del servicio.
+
+![](images/clipboard-1549335739.png)
+
+### **Paso 2 – Confirmación**
+
+Se confirma haciendo clic en **“Sí, eliminar”**.
+
+![](images/clipboard-2462405851.png)
+
+El servicio desaparece de la orden.
+
+![](images/clipboard-3279393134.png){width="501"}
+
+### **11. Gestión de Repuestos utilizados en la orden**
+
+Cada orden puede incluir uno o más repuestos usados en la reparación.
+
+![](images/clipboard-3891375565.png){width="217"}
+
+![](images/clipboard-1851366882.png){width="569"}
+
+### **11.1 Agregar repuestos a la orden**
+
+### **Paso 1 – Clic en “Agregar Repuesto”**
+
+Dentro de la orden aparece el botón correspondiente.
+
+![](images/clipboard-3140179311.png)
+
+### ![](images/clipboard-3140179311.png)
+
+**Paso 2 Completar formulario**
+
+![](images/clipboard-508740902.png){width="537"}
+
+### **Paso 3 – Guardar**
+
+Clic en **Asignar respuesto.**
+
+![](images/clipboard-2441971794.png){width="510"}
+
+El repuesto aparecerá en la lista y su costo se sumará al total de la orden.
+
+### **11.2 Editar un repuesto asignado**
+
+**Paso 1 – Seleccionar repuesto**
+
+Se hace clic en el ícono de **lápiz verde**.
+
+![](images/clipboard-1956283131.png)
+
+**Paso 2 – Modificar los datos**
+
+Luego clic en **Actualizar**.
+
+El sistema mostrará el mensaje de actualización exitosa.
+
+![](images/clipboard-2006003622.png)
+
+## **3.8.6.3 Eliminar un repuesto de la orden**
+
+### **Paso 1 – Eliminar**
+
+Se hace clic en la **papelera roja** del repuesto.
+
+![](images/clipboard-648486376.png)
+
+### **Paso 2 – Confirmar**
+
+Se selecciona **“Sí, eliminar”**.
+
+![](images/clipboard-1596658153.png)
+
+El sistema elimina ese repuesto de la orden.
+
+### **Conclusión**
+
+El sistema de gestión del *Taller Automotriz* proporciona una plataforma completa, intuitiva y eficiente para administrar cada uno de los procesos fundamentales del taller. A través de sus distintos módulos —Clientes, Vehículos, Aseguradoras, Citas, Mecánicos, Servicios, Repuestos, Órdenes de Trabajo y Facturación— el usuario puede realizar operaciones CRUD de manera rápida y organizada, manteniendo un control preciso de la información y asegurando una correcta trazabilidad de cada actividad realizada en el taller.
+
+Este manual proporciona todas las instrucciones necesarias para que el usuario pueda operar el sistema de manera autónoma, segura y efectiva, aprovechando cada una de las herramientas disponibles.
